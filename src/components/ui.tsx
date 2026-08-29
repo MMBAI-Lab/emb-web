@@ -126,18 +126,6 @@ export function NeonButton({
   )
 }
 
-/**
- * Texto con glitch ocasional. Las dos capas fantasma salen de data-text, así que
- * el contenido tiene que ser una string.
- */
-export function GlitchText({ text, className = '' }: { text: string; className?: string }) {
-  return (
-    <span className={`glitch ${className}`} data-text={text}>
-      {text}
-    </span>
-  )
-}
-
 /** Aviso de contenido provisional. */
 export function Notice({ children }: { children: React.ReactNode }) {
   return (

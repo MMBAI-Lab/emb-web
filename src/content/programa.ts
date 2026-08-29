@@ -1,21 +1,19 @@
 /**
- * Cronograma del curso.
+ * Cronograma de la edición 2027, según el programa confirmado por el comité.
  *
- * TODO(contenido): el programa 2027 no esta publicado todavia. Lo que sigue es
- * la estructura de dos semanas de las ediciones anteriores, marcada como
- * provisional: `CONFIRMED = false` hace que /programa muestre un aviso.
- * Para cerrarlo: completar `topics` y `teacher` de cada bloque y poner
- * CONFIRMED = true.
+ * El programa de origen no fija horarios, solo el orden teórica / TP dentro de
+ * cada día, así que acá tampoco se inventan: cada día lista sus bloques en ese
+ * orden.
  */
 
-export const CONFIRMED = false
+export const CONFIRMED = true
 
 export type Block = {
   /** 'teorica' | 'practica' cambia el color del bloque. */
   kind: 'teorica' | 'practica'
-  time: string
   title: string
-  teacher?: string
+  /** Docentes confirmados. Vacío cuando el programa todavía no los asigna. */
+  teachers?: string[]
 }
 
 export type Day = {
@@ -30,42 +28,62 @@ export type Week = {
   days: Day[]
 }
 
+/** Los ejes temáticos que atraviesan las dos semanas. Alimentan la home. */
 export const MODULES = [
   {
-    title: 'Fundamentos',
+    title: 'Estructura electrónica',
     summary:
-      'Superficies de energía potencial, campos de fuerza clásicos, minimización ' +
-      'y el planteo de un sistema biomolecular.',
+      'Hartree-Fock, teoría del funcional de la densidad, métodos semiempíricos ' +
+      'y post Hartree-Fock. Cálculo de propiedades moleculares y optimización de ' +
+      'geometría.',
+  },
+  {
+    title: 'Campos de fuerza',
+    summary:
+      'Campos de fuerza clásicos y generación de parámetros para sistemas que ' +
+      'todavía no están parametrizados.',
   },
   {
     title: 'Dinámica molecular',
     summary:
-      'Integración de las ecuaciones de movimiento, ensambles, control de ' +
-      'temperatura y presión, solvente explícito, análisis de trayectorias.',
+      'Fundamentos y termodinámica estadística. Preparación del sistema, ' +
+      'termalización, equilibración, producción y análisis de trayectorias.',
   },
   {
-    title: 'Energía libre',
+    title: 'QM/MM y HPC',
     summary:
-      'Muestreo mejorado, umbrella sampling, metadinámica y calculo de energías ' +
-      'libres de union.',
+      'Métodos multiescala cuántico-clásicos aplicados a sitios activos, y ' +
+      'arquitecturas de cómputo de alta performance.',
   },
   {
-    title: 'Estructura electrónica y QM/MM',
+    title: 'Membranas y glicoproteínas',
     summary:
-      'DFT aplicada a biomoléculas, métodos híbridos cuantico-clásicos y ' +
-      'reactividad en sitios activos.',
+      'Simulación de carbohidratos, glicoproteínas y membranas biológicas, ' +
+      'incluidas las proteínas insertas en membrana.',
   },
   {
-    title: 'Ácidos nucleicos',
+    title: 'Aprendizaje automático',
     summary:
-      'Modelado de ADN y ARN, parámetros helicoidales, flexibilidad de secuencia ' +
-      'y complejos con proteínas.',
+      'Fundamentos de machine learning, cálculos ML y ML/MM en química ' +
+      'computacional, y predicción de estructura de proteínas con AlphaFold.',
   },
   {
-    title: 'Membranas y sistemas grandes',
+    title: 'Energías libres',
     summary:
-      'Bicapas lipídicas, proteínas de membrana, modelos de grano gruesado y ' +
-      'estrategias multiescala.',
+      'Técnicas básicas y avanzadas de determinación de energías libres: ' +
+      'metadinámica, strings y afines.',
+  },
+  {
+    title: 'Diseño de fármacos',
+    summary:
+      'Docking molecular, predicción de complejos droga-proteína y ' +
+      'proteína-proteína, cribado virtual e IA aplicada al diseño.',
+  },
+  {
+    title: 'Grano grueso',
+    summary:
+      'Métodos mesoscópicos y física de polímeros, con simulaciones de grano ' +
+      'grueso aplicadas al ADN.',
   },
 ] as const
 
@@ -78,40 +96,94 @@ export const WEEKS: Week[] = [
         date: '22/02',
         weekday: 'Lunes',
         blocks: [
-          { kind: 'teorica', time: '09:00 - 12:00', title: 'Apertura y fundamentos del modelado molecular' },
-          { kind: 'practica', time: '14:00 - 18:00', title: 'Entorno de trabajo, visualización y preparación de sistemas' },
+          {
+            kind: 'teorica',
+            title:
+              'Introducción a los métodos de simulación computacional en química. ' +
+              'Métodos de estructura electrónica HF. Cálculos de propiedades ' +
+              'moleculares. Teoría del funcional de la densidad.',
+            teachers: ['D. Estrin', 'D. Scherlis'],
+          },
+          {
+            kind: 'practica',
+            title: 'Optimización de geometría. Cálculos de estructura electrónica.',
+          },
         ],
       },
       {
         date: '23/02',
         weekday: 'Martes',
         blocks: [
-          { kind: 'teorica', time: '09:00 - 12:00', title: 'Campos de fuerza y mecánica molecular' },
-          { kind: 'practica', time: '14:00 - 18:00', title: 'Minimización y equilibrado' },
+          {
+            kind: 'teorica',
+            title:
+              'Métodos de estructura electrónica. Métodos semiempíricos, post ' +
+              'Hartree-Fock. Campos de fuerzas clásicos. Cálculos de estructura ' +
+              'electrónica y parametrización.',
+            teachers: ['D. Estrin', 'D. Scherlis'],
+          },
+          {
+            kind: 'practica',
+            title:
+              'Problemas de estructura electrónica. Generación de parámetros para ' +
+              'campos de fuerza.',
+          },
         ],
       },
       {
         date: '24/02',
         weekday: 'Miércoles',
         blocks: [
-          { kind: 'teorica', time: '09:00 - 12:00', title: 'Dinámica molecular clasica' },
-          { kind: 'practica', time: '14:00 - 18:00', title: 'Primera simulación en solvente explícito' },
+          {
+            kind: 'teorica',
+            title:
+              'Fundamentos de dinámica molecular clásica. Termodinámica ' +
+              'estadística. Dinámica molecular.',
+            teachers: ['L. Martinez'],
+          },
+          {
+            kind: 'practica',
+            title: 'Dinámica molecular clásica: primeros principios.',
+            teachers: ['L. Martinez'],
+          },
         ],
       },
       {
         date: '25/02',
         weekday: 'Jueves',
         blocks: [
-          { kind: 'teorica', time: '09:00 - 12:00', title: 'Análisis de trayectorias' },
-          { kind: 'practica', time: '14:00 - 18:00', title: 'Metricas estructurales y series temporales' },
+          {
+            kind: 'teorica',
+            title:
+              'Dinámica molecular clásica, aplicaciones variadas: solutos en ' +
+              'solvente, complejos, ejemplos químicos, hidratos de carbono y ' +
+              'proteínas. El ABC de la dinámica molecular de proteínas.',
+            teachers: ['L. Capece', 'P. Dans'],
+          },
+          {
+            kind: 'practica',
+            title: 'Preparación del sistema, termalización y equilibración.',
+          },
         ],
       },
       {
         date: '26/02',
         weekday: 'Viernes',
         blocks: [
-          { kind: 'teorica', time: '09:00 - 12:00', title: 'Muestreo mejorado y energía libre' },
-          { kind: 'practica', time: '14:00 - 18:00', title: 'Umbrella sampling y metadinámica' },
+          {
+            kind: 'teorica',
+            title: 'Métodos multiescala QM/MM: fundamentos y aplicaciones.',
+            teachers: ['A. Zeida'],
+          },
+          {
+            kind: 'teorica',
+            title: 'Arquitectura de cómputo de alta performance (HPC).',
+            teachers: ['M. C. González Lebrero'],
+          },
+          {
+            kind: 'practica',
+            title: 'Dinámica molecular clásica de producción y análisis preliminar.',
+          },
         ],
       },
     ],
@@ -124,42 +196,105 @@ export const WEEKS: Week[] = [
         date: '01/03',
         weekday: 'Lunes',
         blocks: [
-          { kind: 'teorica', time: '09:00 - 12:00', title: 'Estructura electrónica aplicada a biomoléculas' },
-          { kind: 'practica', time: '14:00 - 18:00', title: 'Calculos DFT sobre modelos reducidos' },
+          {
+            kind: 'teorica',
+            title:
+              'Simulación de carbohidratos y glicoproteínas. Simulación de ' +
+              'membranas biológicas. Simulación de proteínas insertas en membranas.',
+            teachers: ['S. Di Lella'],
+          },
+          {
+            kind: 'practica',
+            title: 'Simulaciones con membranas: análisis básicos.',
+            teachers: ['G. Zerbetto de Palma'],
+          },
         ],
       },
       {
         date: '02/03',
         weekday: 'Martes',
         blocks: [
-          { kind: 'teorica', time: '09:00 - 12:00', title: 'Métodos híbridos QM/MM' },
-          { kind: 'practica', time: '14:00 - 18:00', title: 'Reactividad en un sitio activo' },
+          {
+            kind: 'teorica',
+            title: 'Aprendizaje automático: aspectos básicos.',
+            teachers: ['L. Lombardi'],
+          },
+          {
+            kind: 'teorica',
+            title: 'Aplicaciones en química computacional. Cálculos de ML y ML/MM.',
+            teachers: ['A. Roitberg'],
+          },
+          {
+            kind: 'teorica',
+            title: 'Predicción de estructura de proteínas basada en IA: AlphaFold.',
+            teachers: ['L. Abriata'],
+          },
         ],
       },
       {
         date: '03/03',
         weekday: 'Miércoles',
         blocks: [
-          { kind: 'teorica', time: '09:00 - 12:00', title: 'Modelado de ácidos nucleicos' },
-          { kind: 'practica', time: '14:00 - 18:00', title: 'ADN y ARN: parámetros helicoidales y flexibilidad' },
+          {
+            kind: 'teorica',
+            title:
+              'Técnicas de determinación de energías libres, aspectos básicos. ' +
+              'Técnicas avanzadas: metadinámica, strings y afines.',
+            teachers: ['M. Arrar'],
+          },
+          {
+            kind: 'practica',
+            title: 'Cálculos de energía libre en sistemas simples.',
+          },
         ],
       },
       {
         date: '04/03',
         weekday: 'Jueves',
         blocks: [
-          { kind: 'teorica', time: '09:00 - 12:00', title: 'Membranas, proteínas de membrana y grano gruesado' },
-          { kind: 'practica', time: '14:00 - 18:00', title: 'Armado y simulación de una bicapa lipídica' },
+          {
+            kind: 'teorica',
+            title:
+              'Diseño de fármacos. Métodos de docking. Métodos de predicción de ' +
+              'complejos droga-proteína y proteína-proteína. Métodos de cribado ' +
+              'virtual. IA aplicada al diseño de fármacos.',
+            teachers: ['A. Talevi'],
+          },
+          {
+            kind: 'practica',
+            title: 'Cálculos de docking molecular.',
+            teachers: ['Lautaro Alvarez'],
+          },
         ],
       },
       {
         date: '05/03',
         weekday: 'Viernes',
         blocks: [
-          { kind: 'practica', time: '09:00 - 13:00', title: 'Proyecto integrador' },
-          { kind: 'teorica', time: '14:00 - 17:00', title: 'Presentaciones y cierre' },
+          {
+            kind: 'teorica',
+            title: 'Métodos de grano grueso, mesoscópicos y física de polímeros.',
+            teachers: ['P. Dans'],
+          },
+          {
+            kind: 'teorica',
+            title: 'Teoría de simulación molecular.',
+            teachers: ['E. Gonzalez Solveira'],
+          },
+          {
+            kind: 'practica',
+            title: 'Simulaciones de grano grueso con ADN.',
+            teachers: ['P. Dans'],
+          },
         ],
       },
     ],
   },
 ]
+
+/** Docentes confirmados, derivados del propio cronograma y sin repetir. */
+export const FACULTY: string[] = [
+  ...new Set(
+    WEEKS.flatMap((w) => w.days.flatMap((d) => d.blocks.flatMap((b) => b.teachers ?? [])))
+  ),
+].sort((a, b) => a.localeCompare(b, 'es'))

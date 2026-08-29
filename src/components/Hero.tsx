@@ -1,5 +1,5 @@
 import Countdown from '@/components/Countdown'
-import { GlitchText, NeonButton } from '@/components/ui'
+import { NeonButton } from '@/components/ui'
 import { EVENT, HEADER_ORGS } from '@/content/event'
 
 /**
@@ -55,7 +55,7 @@ export default function Hero() {
           <h1 className="mt-4 text-[clamp(2.4rem,7.4vw,5.6rem)] font-light leading-[0.92] text-neon-cyan glow-cyan">
             {EVENT.titleLines.map((line, i) => (
               <span key={line} className="reveal block" style={step(3 + i)}>
-                {i === 2 ? <GlitchText text={line} /> : line}
+                {line}
               </span>
             ))}
           </h1>

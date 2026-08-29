@@ -16,7 +16,6 @@ export const ORGANIZERS: Person[] = [
 ]
 
 /**
- * TODO(contenido): cargar el plantel docente 2027 cuando este confirmado.
- * Mientras la lista este vacia, la home no renderiza la sección de docentes.
+ * El plantel docente no se lista acá: se deriva del cronograma
+ * (`FACULTY` en programa.ts), para que no haya dos fuentes de verdad.
  */
-export const FACULTY: Person[] = []

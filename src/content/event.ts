@@ -1,3 +1,5 @@
+import { FACULTY } from './programa'
+
 /** Datos centrales del evento. Todo el texto del sitio sale de src/content. */
 
 export const EVENT = {
@@ -31,20 +33,22 @@ export const ABOUT = {
   heading: 'Sobre la escuela',
   lead:
     'Un curso intensivo, teórico y práctico, sobre el modelado computacional de ' +
-    'biomoléculas: desde los fundamentos de mecánica molecular y dinámica ' +
-    'molecular hasta métodos híbridos QM/MM y el modelado de ácidos nucleicos, ' +
-    'proteínas y membranas.',
+    'biomoléculas: de la estructura electrónica y los campos de fuerza a la ' +
+    'dinámica molecular, los métodos QM/MM, el aprendizaje automático aplicado a ' +
+    'la química y el diseño de fármacos.',
   body: [
     'La Escuela de Modelado de Biomoléculas reúne a docentes de siete ' +
-      'instituciones de América y Europa para dictar, en dos semanas, un ' +
-      'recorrido completo por las herramientas con las que hoy se estudian los ' +
-      'sistemas biológicos in silico.',
-    'Las clases teóricas se combinan con prácticas en computadora sobre casos ' +
-      'reales, de modo que cada participante termine el curso pudiendo plantear y ' +
-      'correr sus propias simulaciones.',
+      'instituciones de América y Europa para recorrer, en dos semanas, las ' +
+      'herramientas con las que hoy se estudian los sistemas biológicos in ' +
+      'silico.',
+    'Cada jornada cierra un tema: la clase teórica de la mañana se continúa en ' +
+      'un trabajo práctico en computadora sobre ese mismo contenido, de modo que ' +
+      'cada participante termine el curso pudiendo plantear y correr sus propias ' +
+      'simulaciones.',
   ],
   highlights: [
     { value: '2', label: 'semanas intensivas' },
+    { value: String(FACULTY.length), label: 'docentes confirmados' },
     { value: '7', label: 'instituciones participantes' },
     { value: '3', label: 'créditos de posgrado' },
   ],

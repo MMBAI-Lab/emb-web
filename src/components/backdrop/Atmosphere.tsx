@@ -3,8 +3,9 @@
  * viñeta. En el SVG se pinta DESPUES del arte, así que va encima de las
  * moleculas y debajo del contenido.
  *
- * Se le suman los dos gestos CRT que el poster impreso no puede tener: una
- * linea de escaneo que barre la pantalla y un parpadeo global de tubo de neon.
+ * Es la unica capa que no se mueve: son las scanlines, las sombras y la viñeta
+ * del poster, tal cual. El barrido CRT y el parpadeo de tubo de neon que habia
+ * acá se sacaron a pedido; para un curso de posgrado sobraban.
  */
 export default function Atmosphere() {
   return (
@@ -39,20 +40,6 @@ export default function Atmosphere() {
             'radial-gradient(125% 105% at 52% 45%, transparent 55%, rgb(0 0 0 / 0.72) 100%)',
         }}
       />
-
-      {/* Linea de escaneo CRT. */}
-      <div className="amb-sweep absolute inset-x-0 top-0 h-[22vh]">
-        <div
-          className="h-full w-full"
-          style={{
-            background:
-              'linear-gradient(to bottom, transparent, rgb(42 228 255 / 0.05) 60%, rgb(42 228 255 / 0.13) 92%, rgb(255 255 255 / 0.16))',
-          }}
-        />
-      </div>
-
-      {/* Parpadeo global. */}
-      <div className="amb-flicker absolute inset-0 bg-ink-900/[0.06]" />
     </div>
   )
 }

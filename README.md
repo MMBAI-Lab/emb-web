@@ -65,10 +65,14 @@ Todo el texto vive en [src/content/](src/content/) — no hay texto en el JSX:
 | Archivo | Qué tiene |
 |---|---|
 | `event.ts` | fechas, título, sede, contacto, secciones |
-| `programa.ts` | cronograma y módulos |
+| `programa.ts` | cronograma, módulos y docentes |
 | `people.ts` | comité organizador |
 | `institutions.ts` | instituciones participantes |
 | `inscripcion.ts` | aranceles, exenciones, formulario |
+
+El cronograma 2027 está confirmado (`CONFIRMED = true`). La lista de docentes no
+se escribe a mano: `FACULTY` se deriva del propio cronograma, y el contador de la
+home lo toma de ahí, así que no puede desincronizarse.
 
 ### Pendiente de completar
 
@@ -77,9 +81,6 @@ muestre un aviso de "provisional" en vez de mentir:
 
 - **`FORM_URL`** en `inscripcion.ts` — URL del Google Form 2027. Vacío muestra
   "la preinscripción todavía no abrió".
-- **`CONFIRMED`** en `programa.ts` — el cronograma actual es la estructura de las
-  ediciones anteriores, marcada como provisional. Al cargar el programa 2027
-  definitivo, poner `true`.
 - **`FEES_CONFIRMED`** en `inscripcion.ts` — los montos son los de 2025.
 - **`venue.confirmed`** en `event.ts` — sede a confirmar.
 - **Logos** de las instituciones: no están en `brand/`. Hoy se renderizan como

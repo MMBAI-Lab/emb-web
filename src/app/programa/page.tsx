@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import { NeonButton, Notice, Rise, Section, SectionHeading } from '@/components/ui'
+import { NeonButton, Rise, Section, SectionHeading } from '@/components/ui'
 import { EVENT } from '@/content/event'
-import { CONFIRMED, MODULES, WEEKS } from '@/content/programa'
+import { FACULTY, MODULES, WEEKS } from '@/content/programa'
 
 export const metadata: Metadata = {
   title: 'Cronograma',
@@ -14,18 +14,11 @@ export default function Programa() {
       <Section className="pt-28 sm:pt-36">
         <SectionHeading kicker={`${EVENT.format} · ${EVENT.dateLabel}`}>Cronograma</SectionHeading>
 
-        {!CONFIRMED && (
-          <Notice>
-            Cronograma provisional. La grilla definitiva de la edición {EVENT.edition} se publica
-            junto con la apertura de la inscripción.
-          </Notice>
-        )}
-
         <Rise>
           <p className="max-w-3xl text-lg leading-relaxed text-paper-200/85">
-            Dos semanas intensivas: teóricas por la mañana y prácticas en computadora por la tarde.
-            Cada dia cierra un tema, de modo que las prácticas se apoyen siempre en la teorica de
-            esa misma jornada.
+            Dos semanas intensivas. Cada día combina las clases teóricas con un trabajo práctico
+            en computadora sobre el mismo tema, de modo que la práctica se apoye siempre en la
+            teórica de esa jornada.
           </p>
         </Rise>
 
@@ -47,7 +40,7 @@ export default function Programa() {
                 {week.days.map((day) => (
                   <li
                     key={day.date}
-                    className="grid gap-4 py-6 transition-colors hover:bg-ink-600/20 sm:grid-cols-12 sm:gap-6"
+                    className="grid gap-4 py-7 transition-colors hover:bg-ink-600/20 sm:grid-cols-12 sm:gap-6"
                   >
                     <div className="sm:col-span-2">
                       <p
@@ -59,21 +52,26 @@ export default function Programa() {
                       <p className="label-cond text-[0.6rem] text-paper-200/45">{day.weekday}</p>
                     </div>
 
-                    <div className="space-y-4 sm:col-span-10">
+                    <div className="space-y-5 sm:col-span-10">
                       {day.blocks.map((b) => (
-                        <div key={b.title} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
-                          <div className="flex shrink-0 items-center gap-3 sm:w-52">
-                            <span
-                              className={`h-2 w-2 shrink-0 ${
-                                b.kind === 'teorica' ? 'bg-neon-cyan' : 'bg-neon-lime'
-                              }`}
-                              aria-hidden="true"
-                            />
-                            <span className="label-cond text-[0.6rem] text-paper-200/70">
-                              {b.time} · {b.kind}
-                            </span>
+                        <div key={b.title} className="flex gap-3">
+                          <span
+                            className={`mt-2 h-2 w-2 shrink-0 ${
+                              b.kind === 'teorica' ? 'bg-neon-cyan' : 'bg-neon-lime'
+                            }`}
+                            aria-hidden="true"
+                          />
+                          <div>
+                            <p className="label-cond text-[0.6rem] text-paper-200/50">
+                              {b.kind === 'teorica' ? 'Teórica' : 'Trabajo práctico'}
+                            </p>
+                            <p className="mt-1 leading-snug text-paper-100">{b.title}</p>
+                            {b.teachers && (
+                              <p className="mt-1.5 text-sm text-neon-cyan/75">
+                                {b.teachers.join(' · ')}
+                              </p>
+                            )}
                           </div>
-                          <p className="leading-snug text-paper-100">{b.title}</p>
                         </div>
                       ))}
                     </div>
@@ -90,16 +88,16 @@ export default function Programa() {
             <span className="h-2 w-2 bg-neon-cyan" aria-hidden="true" /> Teórica
           </span>
           <span className="label-cond flex items-center gap-2 text-[0.6rem] text-paper-200/70">
-            <span className="h-2 w-2 bg-neon-lime" aria-hidden="true" /> Práctica
+            <span className="h-2 w-2 bg-neon-lime" aria-hidden="true" /> Trabajo práctico
           </span>
         </Rise>
       </Section>
 
-      {/* Módulos tematicos. */}
-      <Section className="pb-32 pt-0">
+      {/* Módulos temáticos. */}
+      <Section className="pt-0">
         <SectionHeading kicker="Transversal">Módulos</SectionHeading>
 
-        <ul className="grid gap-5 sm:grid-cols-2">
+        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {MODULES.map((m, i) => (
             <Rise as="li" key={m.title}>
               <div className="h-full border-l-2 border-neon-violet/50 pl-5">
@@ -109,6 +107,19 @@ export default function Programa() {
                 <h3 className="mt-1 text-2xl text-paper-100">{m.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-paper-200/78">{m.summary}</p>
               </div>
+            </Rise>
+          ))}
+        </ul>
+      </Section>
+
+      {/* Docentes, tomados del propio cronograma. */}
+      <Section className="pb-32 pt-0">
+        <SectionHeading kicker={`${FACULTY.length} confirmados`}>Docentes</SectionHeading>
+
+        <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+          {FACULTY.map((name) => (
+            <Rise as="li" key={name}>
+              <p className="border-l-2 border-neon-cyan/30 pl-4 text-lg text-paper-100">{name}</p>
             </Rise>
           ))}
         </ul>
