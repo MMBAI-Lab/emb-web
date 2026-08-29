@@ -1,6 +1,6 @@
 import { NeonButton, NeonPanel } from '@/components/ui'
 import { EVENT } from '@/content/event'
-import { FORM_URL, LEGACY_SITE } from '@/content/inscripcion'
+import { FORM_URL } from '@/content/inscripcion'
 
 /**
  * Formulario de preinscripción embebido.
@@ -18,17 +18,14 @@ export default function FormEmbed() {
     return (
       <NeonPanel className="max-w-3xl">
         <p className="label-cond text-[0.65rem] text-neon-lime">Preinscripción no abierta</p>
-        <h3 className="mt-3 text-3xl text-paper-100">El formulario todavia no esta publicado</h3>
+        <h3 className="mt-3 text-3xl text-paper-100">El formulario todavía no está publicado</h3>
         <p className="mt-4 leading-relaxed text-paper-200/80">
           La preinscripción de la edición {EVENT.edition} abre unos meses antes del curso. Para
           recibir el aviso o hacer una consulta, escribinos por correo.
         </p>
-        <div className="mt-8 flex flex-wrap gap-4">
+        <div className="mt-8">
           <NeonButton href={`mailto:${EVENT.email}`} tone="cyan" external>
             {EVENT.email}
-          </NeonButton>
-          <NeonButton href={LEGACY_SITE} tone="ghost" external>
-            Sitio de la edición anterior
           </NeonButton>
         </div>
       </NeonPanel>

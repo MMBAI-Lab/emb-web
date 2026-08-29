@@ -9,9 +9,6 @@
 /** TODO(contenido): URL del Google Form de preinscripción 2027. */
 export const FORM_URL: string = ''
 
-/** Sitio de la edición anterior, al que apunta el flyer impreso. */
-export const LEGACY_SITE = 'https://sites.google.com/view/emb27'
-
 export const FEES_CONFIRMED = false
 
 export const FEES = [
