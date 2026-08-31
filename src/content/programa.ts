@@ -314,8 +314,7 @@ export const WEEKS: Week[] = [
  *
  * TODO(contenido): confirmar con el comite. Los que salen de las siete
  * instituciones participantes o del comite organizador estan seguros; el
- * resto se dedujo del contexto del curso. Falta L. Abriata, cuya sede no
- * figura entre las instituciones listadas.
+ * resto se dedujo del contexto del curso.
  */
 export const TEACHER_COUNTRY: Record<string, CountryCode> = {
   // Comite organizador e instituciones del flyer: confirmados.
@@ -328,6 +327,7 @@ export const TEACHER_COUNTRY: Record<string, CountryCode> = {
   'A. Roitberg': 'US', // Department of Chemistry, University of Florida
   'C. Estarellas': 'ES', // Facultad de Farmacia, Universidad de Barcelona
   'D. Scherlis': 'AR',
+  'L. Abriata': 'CH', // École Polytechnique Fédérale de Lausanne
 
   // Deducidos del contexto del curso, a confirmar.
   'S. Di Lella': 'AR',

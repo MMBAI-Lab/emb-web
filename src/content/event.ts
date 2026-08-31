@@ -1,4 +1,5 @@
 import { FACULTY } from './programa'
+import { INSTITUTIONS } from './institutions'
 
 /** Datos centrales del evento. Todo el texto del sitio sale de src/content. */
 
@@ -45,7 +46,7 @@ export const ABOUT = {
     'dinámica molecular, los métodos QM/MM, el aprendizaje automático aplicado a ' +
     'la química y el diseño de fármacos.',
   body: [
-    'La Escuela de Modelado de Biomoléculas reúne a docentes de siete ' +
+    'La Escuela de Modelado de Biomoléculas reúne a docentes de ocho ' +
       'instituciones de América y Europa para recorrer, en dos semanas, las ' +
       'herramientas con las que hoy se estudian los sistemas biológicos in ' +
       'silico.',
@@ -57,7 +58,11 @@ export const ABOUT = {
   highlights: [
     { value: '2', label: 'semanas intensivas' },
     { value: String(FACULTY.length), label: 'docentes confirmados' },
-    { value: '7', label: 'instituciones participantes' },
+    { value: String(INSTITUTIONS.length), label: 'instituciones participantes' },
+    {
+      value: String(new Set(INSTITUTIONS.map((i) => i.country)).size),
+      label: 'países representados',
+    },
     { value: '3', label: 'créditos de posgrado' },
   ],
 } as const

@@ -50,6 +50,13 @@ const FLAGS: Record<CountryCode, React.ReactNode> = {
       <path d="M8.1 6.3a5 5 0 0 1 4.9.9" fill="none" stroke="#fff" strokeWidth="0.55" />
     </>
   ),
+  CH: (
+    <>
+      <rect width="21" height="14" fill="#d52b1e" />
+      <rect x="9.4" y="3.4" width="2.2" height="7.2" fill="#fff" />
+      <rect x="6.9" y="5.9" width="7.2" height="2.2" fill="#fff" />
+    </>
+  ),
   US: (
     <>
       <rect width="21" height="14" fill="#fff" />
