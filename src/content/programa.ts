@@ -240,7 +240,7 @@ export const WEEKS: Week[] = [
             title:
               'Técnicas de determinación de energías libres, aspectos básicos. ' +
               'Técnicas avanzadas: metadinámica, strings y afines.',
-            teachers: ['M. Arrar'],
+            teachers: ['M. Arrar', 'C. Estarellas'],
           },
           {
             kind: 'practica',

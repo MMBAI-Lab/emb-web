@@ -14,12 +14,10 @@ export const EVENT = {
   startsAt: '2027-02-22T09:00:00-03:00',
   endsAt: '2027-03-05T18:00:00-03:00',
   email: 'embexactas@gmail.com',
-  /** TODO(contenido): confirmar sede definitiva de la edición 2027. */
   venue: {
     name: 'Facultad de Ciencias Exactas y Naturales',
     org: 'Universidad de Buenos Aires',
     city: 'Ciudad Universitaria, Buenos Aires, Argentina',
-    confirmed: false,
   },
 } as const
 

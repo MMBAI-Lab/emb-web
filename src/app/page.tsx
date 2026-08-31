@@ -125,11 +125,6 @@ export default function Home() {
             <p className="text-2xl leading-snug text-paper-100">{EVENT.venue.name}</p>
             <p className="mt-2 text-lg text-paper-200/80">{EVENT.venue.org}</p>
             <p className="mt-1 text-paper-200/70">{EVENT.venue.city}</p>
-            {!EVENT.venue.confirmed && (
-              <p className="label-cond mt-6 border-l-2 border-neon-lime pl-4 text-[0.7rem] leading-relaxed text-neon-lime">
-                Sede a confirmar para la edición {EVENT.edition}
-              </p>
-            )}
           </Rise>
 
           <Rise className="lg:col-span-5">

@@ -6,8 +6,9 @@
  * false.
  */
 
-/** TODO(contenido): URL del Google Form de preinscripción 2027. */
-export const FORM_URL: string = ''
+/** Google Form de preinscripción 2027 (link corto: https://forms.gle/GGQrfJnMrGHtdjTM6). */
+export const FORM_URL: string =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfA5hSRjUvyi61-PWH9eF3TQRJI0LAGZN9kxC78tMIAS3u_yw/viewform'
 
 export const FEES_CONFIRMED = false
 
