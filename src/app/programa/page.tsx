@@ -1,11 +1,27 @@
 import type { Metadata } from 'next'
+import Flag from '@/components/Flag'
+import TopicIcon from '@/components/TopicIcon'
 import { NeonButton, Rise, Section, SectionHeading } from '@/components/ui'
 import { EVENT } from '@/content/event'
-import { FACULTY, MODULES, WEEKS } from '@/content/programa'
+import { FACULTY, MODULES, TEACHER_COUNTRY, WEEKS } from '@/content/programa'
 
 export const metadata: Metadata = {
   title: 'Cronograma',
   description: `Cronograma día por día de la Escuela de Modelado de Biomoléculas ${EVENT.edition}, del ${EVENT.dateLabel}.`,
+}
+
+/**
+ * Nombre de docente con la bandera de su sede adelante. Si el docente no
+ * esta en TEACHER_COUNTRY va sin bandera, sin romper nada.
+ */
+function Teacher({ name }: { name: string }) {
+  const country = TEACHER_COUNTRY[name]
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      {country && <Flag country={country} />}
+      {name}
+    </span>
+  )
 }
 
 export default function Programa() {
@@ -67,8 +83,10 @@ export default function Programa() {
                             </p>
                             <p className="mt-1 leading-snug text-paper-100">{b.title}</p>
                             {b.teachers && (
-                              <p className="mt-1.5 text-sm text-neon-cyan/75">
-                                {b.teachers.join(' · ')}
+                              <p className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-neon-cyan/75">
+                                {b.teachers.map((t) => (
+                                  <Teacher key={t} name={t} />
+                                ))}
                               </p>
                             )}
                           </div>
@@ -104,7 +122,10 @@ export default function Programa() {
                 <span className="label-cond text-[0.6rem] text-paper-200/40">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="mt-1 text-2xl text-paper-100">{m.title}</h3>
+                <div className="mt-1 flex items-start gap-3">
+                  <TopicIcon name={m.icon} className="mt-1 h-7 w-7 shrink-0 text-neon-violet" />
+                  <h3 className="text-2xl text-paper-100">{m.title}</h3>
+                </div>
                 <p className="mt-2 text-sm leading-relaxed text-paper-200/78">{m.summary}</p>
               </div>
             </Rise>
@@ -119,7 +140,9 @@ export default function Programa() {
         <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
           {FACULTY.map((name) => (
             <Rise as="li" key={name}>
-              <p className="border-l-2 border-neon-cyan/30 pl-4 text-lg text-paper-100">{name}</p>
+              <p className="border-l-2 border-neon-cyan/30 pl-4 text-lg text-paper-100">
+                <Teacher name={name} />
+              </p>
             </Rise>
           ))}
         </ul>

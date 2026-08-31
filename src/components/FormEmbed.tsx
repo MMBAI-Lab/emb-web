@@ -3,12 +3,12 @@ import { EVENT } from '@/content/event'
 import { FORM_URL } from '@/content/inscripcion'
 
 /**
- * Formulario de preinscripción embebido.
+ * Acceso al formulario de preinscripcion.
  *
- * El iframe de Google Forms no se puede tematizar por dentro: el interior queda
- * con el estilo de Google. Lo que si controlamos es el marco, y siempre se
- * ofrece el link para abrirlo en una pestaña nueva, que en pantallas chicas
- * funciona mucho mejor que el iframe.
+ * Es un boton que abre el Google Form en una pestana nueva, no un iframe: el
+ * interior del iframe no se puede tematizar (queda con el estilo de Google
+ * dentro del sitio), en pantallas chicas se navega mal, y obliga a cargar el
+ * formulario aunque el visitante solo venga a leer los aranceles.
  *
  * Mientras FORM_URL este vacio se muestra el estado de "todavia no abrio", con
  * las vias de contacto.
@@ -32,41 +32,19 @@ export default function FormEmbed() {
     )
   }
 
-  const embedded = FORM_URL.includes('?') ? `${FORM_URL}&embedded=true` : `${FORM_URL}?embedded=true`
-
   return (
-    <div>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-        <p className="label-cond text-[0.65rem] text-neon-cyan">Formulario de preinscripción</p>
-        <a
-          href={FORM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="label-cond text-[0.65rem] text-paper-200/72 underline decoration-neon-cyan/40 underline-offset-4 transition-colors hover:text-neon-cyan"
-        >
-          Abrir en una pestaña nueva &#8599;
-        </a>
+    <NeonPanel className="max-w-3xl">
+      <p className="label-cond text-[0.65rem] text-neon-cyan">Preinscripción abierta</p>
+      <h3 className="mt-3 text-3xl text-paper-100">Completá el formulario</h3>
+      <p className="mt-4 leading-relaxed text-paper-200/80">
+        Se abre en una pestaña nueva. Lleva unos minutos y no implica pago: el comité confirma el
+        cupo por correo.
+      </p>
+      <div className="mt-8">
+        <NeonButton href={FORM_URL} tone="cyan" external>
+          Ir al formulario
+        </NeonButton>
       </div>
-
-      {/* Marco de neon con marcas en las esquinas: el interior es de Google. */}
-      <div className="relative border border-neon-cyan/30 bg-ink-900/60 p-1 sm:p-2">
-        <span
-          className="absolute -left-px -top-px h-4 w-4 border-l-2 border-t-2 border-neon-magenta"
-          aria-hidden="true"
-        />
-        <span
-          className="absolute -bottom-px -right-px h-4 w-4 border-b-2 border-r-2 border-neon-magenta"
-          aria-hidden="true"
-        />
-        <iframe
-          src={embedded}
-          title="Formulario de preinscripción"
-          loading="lazy"
-          className="h-[1100px] w-full bg-white sm:h-[1250px]"
-        >
-          Cargando el formulario...
-        </iframe>
-      </div>
-    </div>
+    </NeonPanel>
   )
 }

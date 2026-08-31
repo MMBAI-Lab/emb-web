@@ -1,4 +1,5 @@
 import type { TopicIconName } from '@/components/TopicIcon'
+import type { CountryCode } from '@/content/institutions'
 
 /**
  * Cronograma de la edición 2027, según el programa confirmado por el comité.
@@ -303,6 +304,40 @@ export const WEEKS: Week[] = [
   },
 ]
 
+
+/**
+ * Pais de la sede de cada docente, para la banderita del cronograma.
+ *
+ * Las claves son exactamente los nombres que usan los bloques de WEEKS. Un
+ * docente que no este en este mapa simplemente va sin bandera, asi que sumar
+ * a alguien al cronograma nunca rompe la pagina.
+ *
+ * TODO(contenido): confirmar con el comite. Los que salen de las siete
+ * instituciones participantes o del comite organizador estan seguros; el
+ * resto se dedujo del contexto del curso. Falta L. Abriata, cuya sede no
+ * figura entre las instituciones listadas.
+ */
+export const TEACHER_COUNTRY: Record<string, CountryCode> = {
+  // Comite organizador e instituciones del flyer: confirmados.
+  'D. Estrin': 'AR',
+  'L. Capece': 'AR',
+  'M. C. González Lebrero': 'AR',
+  'A. Zeida': 'UY',
+  'P. Dans': 'UY',
+  'L. Martinez': 'BR', // Instituto de Química, Universidad de Campinas
+  'A. Roitberg': 'US', // Department of Chemistry, University of Florida
+  'C. Estarellas': 'ES', // Facultad de Farmacia, Universidad de Barcelona
+  'D. Scherlis': 'AR',
+
+  // Deducidos del contexto del curso, a confirmar.
+  'S. Di Lella': 'AR',
+  'G. Zerbetto de Palma': 'AR',
+  'L. Lombardi': 'AR',
+  'M. Arrar': 'AR',
+  'A. Talevi': 'AR',
+  'Lautaro Alvarez': 'AR',
+  'E. Gonzalez Solveira': 'AR',
+}
 /** Docentes confirmados, derivados del propio cronograma y sin repetir. */
 export const FACULTY: string[] = [
   ...new Set(

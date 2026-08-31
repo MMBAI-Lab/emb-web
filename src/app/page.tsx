@@ -1,8 +1,7 @@
-import Image from 'next/image'
-
 import Flag from '@/components/Flag'
 import Hero from '@/components/Hero'
 import TopicIcon from '@/components/TopicIcon'
+import { asset } from '@/lib/asset'
 import { NeonButton, NeonPanel, Rise, Section, SectionHeading } from '@/components/ui'
 import { ABOUT, EVENT } from '@/content/event'
 import { COUNTRY_LABEL, INSTITUTIONS } from '@/content/institutions'
@@ -141,12 +140,15 @@ export default function Home() {
               {EVENT.venue.photo && (
                 <figure className="shrink-0 sm:w-64">
                   <div className="panel-clip relative aspect-[16/10] w-full overflow-hidden border border-neon-cyan/25">
-                    <Image
-                      src={`/${EVENT.venue.photo}`}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={asset(EVENT.venue.photo)}
                       alt={EVENT.venue.photoAlt}
-                      fill
-                      sizes="(min-width: 640px) 256px, 100vw"
-                      className="object-cover"
+                      width={1450}
+                      height={900}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
                   </div>
                   {EVENT.venue.photoCredit && (
