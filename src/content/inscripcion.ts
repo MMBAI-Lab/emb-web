@@ -62,9 +62,9 @@ export const PRIORITY = {
 } as const
 
 export const EXCEPTION_DEADLINE = {
-  /** TODO(contenido): confirmar la fecha límite 2027. */
-  label: '15 de junio',
+  /** TODO(contenido): reemplazar por la fecha límite 2027 cuando se defina. */
+  label: 'Próximamente',
   body:
     'Quienes no puedan afrontar el arancel pueden solicitar una excepción por ' +
-    'correo hasta esa fecha.',
+    'correo. La fecha límite todavía no está definida.',
 } as const
