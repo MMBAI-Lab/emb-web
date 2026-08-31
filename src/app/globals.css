@@ -144,6 +144,19 @@
     0 12px 40px -18px color-mix(in srgb, var(--color-neon-magenta) 34%, transparent);
 }
 
+/* Solo el recorte de esquina del panel, para media que trae su propio fondo
+   (la foto de la sede). La esquina es mas chica porque la caja tambien. */
+@utility panel-clip {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+}
+
 /* Etiqueta condensada mayuscula: el tono de voz del flyer. */
 @utility label-cond {
   font-family: var(--font-cond);

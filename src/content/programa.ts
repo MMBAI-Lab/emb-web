@@ -1,3 +1,5 @@
+import type { TopicIconName } from '@/components/TopicIcon'
+
 /**
  * Cronograma de la edición 2027, según el programa confirmado por el comité.
  *
@@ -29,9 +31,10 @@ export type Week = {
 }
 
 /** Los ejes temáticos que atraviesan las dos semanas. Alimentan la home. */
-export const MODULES = [
+export const MODULES: readonly { title: string; summary: string; icon: TopicIconName }[] = [
   {
     title: 'Estructura electrónica',
+    icon: 'electronica',
     summary:
       'Hartree-Fock, teoría del funcional de la densidad, métodos semiempíricos ' +
       'y post Hartree-Fock. Cálculo de propiedades moleculares y optimización de ' +
@@ -39,48 +42,56 @@ export const MODULES = [
   },
   {
     title: 'Campos de fuerza',
+    icon: 'campos',
     summary:
       'Campos de fuerza clásicos y generación de parámetros para sistemas que ' +
       'todavía no están parametrizados.',
   },
   {
     title: 'Dinámica molecular',
+    icon: 'dinamica',
     summary:
       'Fundamentos y termodinámica estadística. Preparación del sistema, ' +
       'termalización, equilibración, producción y análisis de trayectorias.',
   },
   {
     title: 'QM/MM y HPC',
+    icon: 'qmmm',
     summary:
       'Métodos multiescala cuántico-clásicos aplicados a sitios activos, y ' +
       'arquitecturas de cómputo de alta performance.',
   },
   {
     title: 'Membranas y glicoproteínas',
+    icon: 'membranas',
     summary:
       'Simulación de carbohidratos, glicoproteínas y membranas biológicas, ' +
       'incluidas las proteínas insertas en membrana.',
   },
   {
     title: 'Aprendizaje automático',
+    icon: 'ml',
     summary:
       'Fundamentos de machine learning, cálculos ML y ML/MM en química ' +
       'computacional, y predicción de estructura de proteínas con AlphaFold.',
   },
   {
     title: 'Energías libres',
+    icon: 'energias',
     summary:
       'Técnicas básicas y avanzadas de determinación de energías libres: ' +
       'metadinámica, strings y afines.',
   },
   {
     title: 'Diseño de fármacos',
+    icon: 'farmacos',
     summary:
       'Docking molecular, predicción de complejos droga-proteína y ' +
       'proteína-proteína, cribado virtual e IA aplicada al diseño.',
   },
   {
     title: 'Grano grueso',
+    icon: 'granogrueso',
     summary:
       'Métodos mesoscópicos y física de polímeros, con simulaciones de grano ' +
       'grueso aplicadas al ADN.',

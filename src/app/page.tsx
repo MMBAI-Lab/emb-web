@@ -1,4 +1,8 @@
+import Image from 'next/image'
+
+import Flag from '@/components/Flag'
 import Hero from '@/components/Hero'
+import TopicIcon from '@/components/TopicIcon'
 import { NeonButton, NeonPanel, Rise, Section, SectionHeading } from '@/components/ui'
 import { ABOUT, EVENT } from '@/content/event'
 import { COUNTRY_LABEL, INSTITUTIONS } from '@/content/institutions'
@@ -59,7 +63,15 @@ export default function Home() {
                 <span className="label-cond text-[0.65rem] text-paper-200/40">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="mt-2 text-2xl text-neon-cyan">{m.title}</h3>
+                <div className="mt-2 flex items-start gap-3">
+                  <TopicIcon
+                    name={m.icon}
+                    className={`mt-1 h-7 w-7 shrink-0 ${
+                      i % 2 === 0 ? 'text-neon-cyan/85' : 'text-neon-magenta/85'
+                    }`}
+                  />
+                  <h3 className="text-2xl text-neon-cyan">{m.title}</h3>
+                </div>
                 <p className="mt-3 text-sm leading-relaxed text-paper-200/80">{m.summary}</p>
               </NeonPanel>
             </Rise>
@@ -84,7 +96,10 @@ export default function Home() {
             <Rise as="li" key={p.name}>
               <div className="border-l-2 border-neon-cyan/40 pl-4 transition-colors hover:border-neon-magenta">
                 <p className="text-xl text-paper-100">{p.name}</p>
-                <p className="label-cond mt-1 text-[0.65rem] text-neon-cyan/70">{p.affiliation}</p>
+                <p className="label-cond mt-1 flex items-center gap-2 text-[0.65rem] text-neon-cyan/70">
+                  <Flag country={p.country} />
+                  {p.affiliation}
+                </p>
               </div>
             </Rise>
           ))}
@@ -122,9 +137,32 @@ export default function Home() {
 
         <div className="grid gap-10 lg:grid-cols-12">
           <Rise className="lg:col-span-7">
-            <p className="text-2xl leading-snug text-paper-100">{EVENT.venue.name}</p>
-            <p className="mt-2 text-lg text-paper-200/80">{EVENT.venue.org}</p>
-            <p className="mt-1 text-paper-200/70">{EVENT.venue.city}</p>
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+              {EVENT.venue.photo && (
+                <figure className="shrink-0 sm:w-56">
+                  <div className="panel-clip relative aspect-[4/3] w-full overflow-hidden border border-neon-cyan/25">
+                    <Image
+                      src={`/${EVENT.venue.photo}`}
+                      alt={EVENT.venue.photoAlt}
+                      fill
+                      sizes="(min-width: 640px) 224px, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  {EVENT.venue.photoCredit && (
+                    <figcaption className="label-cond mt-2 text-[0.55rem] leading-relaxed text-paper-200/45">
+                      {EVENT.venue.photoCredit}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+
+              <div>
+                <p className="text-2xl leading-snug text-paper-100">{EVENT.venue.name}</p>
+                <p className="mt-2 text-lg text-paper-200/80">{EVENT.venue.org}</p>
+                <p className="mt-1 text-paper-200/70">{EVENT.venue.city}</p>
+              </div>
+            </div>
           </Rise>
 
           <Rise className="lg:col-span-5">

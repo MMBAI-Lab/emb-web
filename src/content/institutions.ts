@@ -4,10 +4,13 @@
  * (igual que el flyer). El campo `logo` queda listo para cuando lleguen.
  */
 
+/** Los paises que aparecen en el sitio. Lo usa tambien <Flag>. */
+export type CountryCode = 'AR' | 'ES' | 'BR' | 'US' | 'UY'
+
 export type Institution = {
   unit: string
   org: string
-  country: 'AR' | 'ES' | 'BR' | 'US' | 'UY'
+  country: CountryCode
   /** TODO(contenido): ruta en /public cuando existan los logos. */
   logo?: string
 }
@@ -26,7 +29,7 @@ export const INSTITUTIONS: Institution[] = [
   { unit: 'Facultad de Medicina', org: 'Universidad de la República', country: 'UY' },
 ]
 
-export const COUNTRY_LABEL: Record<Institution['country'], string> = {
+export const COUNTRY_LABEL: Record<CountryCode, string> = {
   AR: 'Argentina',
   ES: 'España',
   BR: 'Brasil',

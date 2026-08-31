@@ -18,6 +18,16 @@ export const EVENT = {
     name: 'Facultad de Ciencias Exactas y Naturales',
     org: 'Universidad de Buenos Aires',
     city: 'Ciudad Universitaria, Buenos Aires, Argentina',
+    /**
+     * Foto de la sede, dentro de /public. Vacio = no se muestra la foto y
+     * el texto ocupa todo el ancho.
+     * TODO(contenido): confirmar credito y permiso de uso de la imagen.
+     */
+    photo: '',
+    photoAlt:
+      'Pabellón II de la Facultad de Ciencias Exactas y Naturales, en Ciudad ' +
+      'Universitaria, al atardecer',
+    photoCredit: '',
   },
 } as const
 
