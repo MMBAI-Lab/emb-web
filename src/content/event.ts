@@ -21,13 +21,13 @@ export const EVENT = {
     /**
      * Foto de la sede, dentro de /public. Vacio = no se muestra la foto y
      * el texto ocupa todo el ancho.
-     * TODO(contenido): confirmar credito y permiso de uso de la imagen.
+     * TODO(contenido): confirmar el permiso de uso con CPAU.
      */
-    photo: '',
+    photo: 'sede.jpg',
     photoAlt:
       'Pabellón II de la Facultad de Ciencias Exactas y Naturales, en Ciudad ' +
       'Universitaria, al atardecer',
-    photoCredit: '',
+    photoCredit: 'Foto: Moderna Buenos Aires / CPAU',
   },
 } as const
 

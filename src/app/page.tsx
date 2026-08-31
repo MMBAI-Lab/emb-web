@@ -139,13 +139,13 @@ export default function Home() {
           <Rise className="lg:col-span-7">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
               {EVENT.venue.photo && (
-                <figure className="shrink-0 sm:w-56">
-                  <div className="panel-clip relative aspect-[4/3] w-full overflow-hidden border border-neon-cyan/25">
+                <figure className="shrink-0 sm:w-64">
+                  <div className="panel-clip relative aspect-[16/10] w-full overflow-hidden border border-neon-cyan/25">
                     <Image
                       src={`/${EVENT.venue.photo}`}
                       alt={EVENT.venue.photoAlt}
                       fill
-                      sizes="(min-width: 640px) 224px, 100vw"
+                      sizes="(min-width: 640px) 256px, 100vw"
                       className="object-cover"
                     />
                   </div>
