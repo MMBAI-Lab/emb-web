@@ -53,6 +53,17 @@ export default function Footer() {
         <p className="label-cond mt-5 text-[0.6rem] text-paper-200/35">
           Escuela de Modelado de Biomoléculas · Edición {EVENT.edition}
         </p>
+        <p className="label-cond mt-1.5 text-[0.6rem] text-paper-200/35">
+          Sitio diseñado por{' '}
+          <a
+            href="https://www.danslab.xyz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-paper-200/55 underline decoration-neon-cyan/30 underline-offset-4 transition-colors hover:text-neon-cyan"
+          >
+            DansLab
+          </a>
+        </p>
       </div>
     </footer>
   )
