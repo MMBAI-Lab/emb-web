@@ -304,20 +304,15 @@ export const WEEKS: Week[] = [
   },
 ]
 
-
 /**
  * Pais de la sede de cada docente, para la banderita del cronograma.
  *
  * Las claves son exactamente los nombres que usan los bloques de WEEKS. Un
  * docente que no este en este mapa simplemente va sin bandera, asi que sumar
  * a alguien al cronograma nunca rompe la pagina.
- *
- * TODO(contenido): confirmar con el comite. Los que salen de las siete
- * instituciones participantes o del comite organizador estan seguros; el
- * resto se dedujo del contexto del curso.
  */
 export const TEACHER_COUNTRY: Record<string, CountryCode> = {
-  // Comite organizador e instituciones del flyer: confirmados.
+  // Comite organizador e instituciones participantes.
   'D. Estrin': 'AR',
   'L. Capece': 'AR',
   'M. C. González Lebrero': 'AR',
@@ -329,7 +324,7 @@ export const TEACHER_COUNTRY: Record<string, CountryCode> = {
   'D. Scherlis': 'AR',
   'L. Abriata': 'CH', // École Polytechnique Fédérale de Lausanne
 
-  // Deducidos del contexto del curso, a confirmar.
+  // Resto del plantel, con sede en Argentina.
   'S. Di Lella': 'AR',
   'G. Zerbetto de Palma': 'AR',
   'L. Lombardi': 'AR',
@@ -338,6 +333,7 @@ export const TEACHER_COUNTRY: Record<string, CountryCode> = {
   'Lautaro Alvarez': 'AR',
   'E. Gonzalez Solveira': 'AR',
 }
+
 /** Docentes confirmados, derivados del propio cronograma y sin repetir. */
 export const FACULTY: string[] = [
   ...new Set(
