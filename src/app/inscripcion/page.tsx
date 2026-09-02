@@ -7,6 +7,7 @@ import {
   DISCOUNTS,
   EXCEPTION_DEADLINE,
   EXEMPTIONS,
+  EXEMPTIONS_SOURCE,
   FEES,
   FEES_CONFIRMED,
   PRIORITY,
@@ -70,7 +71,7 @@ export default function Inscripcion() {
           <Rise>
             <h3 className="text-3xl text-neon-magenta glow-magenta">Exenciones</h3>
             <p className="mt-3 text-sm text-paper-200/72">
-              Quedan exentos del arancel:
+              Quedan exentos del arancel ({EXEMPTIONS_SOURCE}):
             </p>
             <ul className="mt-5 space-y-3">
               {EXEMPTIONS.map((e) => (

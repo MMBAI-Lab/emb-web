@@ -1,47 +1,54 @@
 /**
- * Preinscripción, aranceles y exenciones.
+ * Preinscripción, aranceles y exenciones de la edición 2027.
  *
- * Los montos y la fecha límite son los de la edición 2025 y estan marcados como
- * no confirmados: /inscripción muestra un aviso mientras FEES_CONFIRMED sea
- * false.
+ * El arancel, las exenciones y los descuentos son los que fija la FCEyN por
+ * resolución (Res. CD 091/24 el arancel, Res. CD 1775/25 las exenciones), asi
+ * que el texto sigue de cerca la letra de la norma en vez de parafrasearla.
  */
 
 /** Google Form de preinscripción 2027 (link corto: https://forms.gle/GGQrfJnMrGHtdjTM6). */
 export const FORM_URL: string =
   'https://docs.google.com/forms/d/e/1FAIpQLSfA5hSRjUvyi61-PWH9eF3TQRJI0LAGZN9kxC78tMIAS3u_yw/viewform'
 
-export const FEES_CONFIRMED = false
+export const FEES_CONFIRMED = true
 
 export const FEES = [
   {
-    audience: 'Residentes en Argentina',
-    amount: '$92.492',
-    note: 'Valor de la edición 2025, a actualizar.',
-  },
-  {
-    audience: 'Estudiantes del exterior',
-    amount: 'USD 400',
-    note: 'Valor de la edición 2025, a actualizar.',
+    audience: 'Valor del curso',
+    amount: '$438.000',
+    note:
+      'El arancel lo fija la FCEyN y se actualiza según la hora del cargo testigo ' +
+      '(Res. CD 091/24).',
   },
 ] as const
 
+/** La resolucion que fija exenciones y descuentos, citada en la pagina. */
+export const EXEMPTIONS_SOURCE = 'Res. CD 1775/25'
+
 export const EXEMPTIONS = [
-  'Doctorandos de Exactas (UBA)',
-  'Estudiantes de grado de Exactas (UBA)',
+  'Alumnos de grado de la FCEyN-UBA',
   'Docentes con dedicación exclusiva',
-  'Integrantes de CONICET',
-  'Investigadores con afiliación a instituciones científicas',
-  'Instituciones con convenio de reciprocidad',
+  'Investigadores/as y personal de apoyo de CONICET',
+  'Becarios/as que realicen sus tareas en la FCEyN-UBA',
+  'Alumnos regulares de carreras de doctorado de otras facultades de la UBA o de ' +
+    'otras universidades nacionales con las cuales haya reciprocidad en la exención ' +
+    'de aranceles para cursos de posgrado',
 ] as const
 
 export const DISCOUNTS = [
   {
     value: '50%',
-    who: 'Doctorandos con la currícula completa y graduados de Exactas (UBA)',
+    who:
+      'Alumnos regulares de carreras de doctorado de otras facultades de la UBA con ' +
+      'las cuales no haya reciprocidad en la exención de aranceles para cursos de ' +
+      'posgrado.',
   },
   {
     value: '20%',
-    who: 'Personal de universidades y del sector público',
+    who:
+      'Estudiantes regulares de carreras de doctorado de otras universidades ' +
+      'nacionales con las cuales no haya reciprocidad en la exención de aranceles ' +
+      'para cursos de posgrado.',
   },
 ] as const
 
@@ -62,9 +69,10 @@ export const PRIORITY = {
 } as const
 
 export const EXCEPTION_DEADLINE = {
-  /** TODO(contenido): reemplazar por la fecha límite 2027 cuando se defina. */
-  label: 'Próximamente',
+  label: '31/10/2026',
   body:
-    'Quienes no puedan afrontar el arancel pueden solicitar una excepción por ' +
-    'correo. La fecha límite todavía no está definida.',
+    'Los estudiantes regulares de doctorado que provengan de grupos de investigación ' +
+    'con colaboraciones demostrables con la FCEyN pueden solicitar la exención del ' +
+    'arancel. Se pide por correo, hasta esa fecha, con una nota que explique la ' +
+    'relevancia del curso en su doctorado y los detalles de la colaboración vigente.',
 } as const
