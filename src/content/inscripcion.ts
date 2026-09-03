@@ -26,13 +26,12 @@ export const FEES = [
 export const EXEMPTIONS_SOURCE = 'Res. CD 1775/25'
 
 export const EXEMPTIONS = [
-  'Alumnos de grado de la FCEyN-UBA',
-  'Docentes con dedicación exclusiva',
-  'Investigadores/as y personal de apoyo de CONICET',
-  'Becarios/as que realicen sus tareas en la FCEyN-UBA',
-  'Alumnos regulares de carreras de doctorado de otras facultades de la UBA o de ' +
-    'otras universidades nacionales con las cuales haya reciprocidad en la exención ' +
-    'de aranceles para cursos de posgrado',
+  'Estudiantes de grado y de doctorado de la FCEyN-UBA',
+  'Docentes, investigadores, becarios y personal de apoyo que realicen sus tareas ' +
+    'en la FCEyN-UBA',
+  'Alumnos de doctorado de otras facultades de la UBA o de otras universidades ' +
+    'nacionales con las cuales haya reciprocidad en la exención de aranceles para ' +
+    'cursos de posgrado',
 ] as const
 
 export const DISCOUNTS = [
