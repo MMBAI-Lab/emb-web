@@ -68,7 +68,7 @@ export const PRIORITY = {
 } as const
 
 export const EXCEPTION_DEADLINE = {
-  label: '31/10/2026',
+  label: '30/10/2026',
   body:
     'Los estudiantes regulares de doctorado que provengan de grupos de investigación ' +
     'con colaboraciones demostrables con la FCEyN pueden solicitar la exención del ' +
