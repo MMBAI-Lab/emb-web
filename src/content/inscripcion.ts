@@ -15,7 +15,7 @@ export const FEES_CONFIRMED = true
 export const FEES = [
   {
     audience: 'Valor del curso',
-    amount: '$438.000',
+    amount: '$146.000',
     note:
       'El arancel lo fija la FCEyN y se actualiza según la hora del cargo testigo ' +
       '(Res. CD 091/24).',
